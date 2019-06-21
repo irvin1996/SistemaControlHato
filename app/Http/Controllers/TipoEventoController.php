@@ -12,9 +12,17 @@ use App\TipoEvento;
 class TipoEventoController extends Controller
 {
 
+//index
+public function getIndexTipoEvento(){
+
+       $TipoEvento = TipoEvento::orderBy('nombretipoEvento','asc');
+
+   return view('Mantenimientos.TipoEvento',['tipEvento'=>$TipoEvento]);
+}
+
 //Create
   public function getTipoEventoCreate(){
-    $TipoEvento=tipo_eventos::all();
+    $TipoEvento=TipoEvento::all();
      return view('tipoEvento.create',['tipEvent'=>$TipoEvento]);
  }
 
@@ -23,10 +31,10 @@ class TipoEventoController extends Controller
   {
 
       $this->validate($request, [
-      'tipoEvento' => 'required|min:4|unique:tipoEvento'
+      'nombretipoEvento' => 'required|min:4|unique:tipoEvento'
       ]);
 
-       $tipEvent = new tipo_eventos([
+       $tipEvent = new TipoEvento([
       'nombretipoEvento'=> $request->input('nombreTipoEvento')
        ]);
        $tipEvent->save();
@@ -39,7 +47,7 @@ class TipoEventoController extends Controller
 
 public function getTipoEventoEditar(TipoEvento $id){
 
-   $tipEvent= tipo_eventos::find($id->id);
+   $tipEvent= TipoEvento::find($id->id);
  return view('TipoEvento.edit',['tipEvent'=>$tipEvent]);
  }
 
@@ -49,7 +57,7 @@ public function getTipoEventoEditar(TipoEvento $id){
        $this->validate($request, [
            'nombretipoEvento' => 'required|min:4|unique:tipoEvento'
        ]);
-       $tipEvent=tipo_eventos::find($request->input('id'));
+       $tipEvent=TipoEvento::find($request->input('id'));
 
        $tipEvent->nombretipoEvento=$request->input('nombreTipoEvento');
        $tipEvent->save();
@@ -59,7 +67,7 @@ public function getTipoEventoEditar(TipoEvento $id){
  //Remove
 
  //Eliminar
-  
+
 
 
 

@@ -18,9 +18,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 //MANTENIMIENTOS
-Route::get('TipoEvento', function () {
-  return view('Mantenimientos.TipoEvento');
-})->name('TipoEvento.index');
+
+Route::get('/TipoEvento',['uses'=>'TipoEventoController@getIndexTipoEvento'] )->name('TipoEvento.index')->middleware('auth');
+
+
+
+
 
 
 Route::group(['middleware' => 'auth'], function () {

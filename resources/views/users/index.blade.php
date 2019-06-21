@@ -43,6 +43,7 @@
                       <th class="text-right">
                         {{ __('Actions') }}
                       </th>
+
                     </thead>
                     <tbody>
                       @foreach($users as $user)
@@ -61,7 +62,7 @@
                               <form action="{{ route('user.destroy', $user) }}" method="post">
                                   @csrf
                                   @method('delete')
-                              
+
                                   <a rel="tooltip" class="btn btn-success btn-link" href="{{ route('user.edit', $user) }}" data-original-title="" title="">
                                     <i class="material-icons">edit</i>
                                     <div class="ripple-container"></div>
