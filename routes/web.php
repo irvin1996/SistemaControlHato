@@ -17,6 +17,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+//MANTENIMIENTOS
+Route::get('TipoEvento', function () {
+  return view('Mantenimientos.TipoEvento');
+})->name('TipoEvento.index');
+
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('table-list', function () {
@@ -54,4 +59,3 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 });
-
