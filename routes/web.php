@@ -17,12 +17,24 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+
 //MANTENIMIENTOS
 
+//Tipo Evento
+//Index
 Route::get('/TipoEvento',['uses'=>'TipoEventoController@getIndexTipoEvento'] )->name('TipoEvento.index')->middleware('auth');
+//Create
+Route::get('/TipoEventoCreate',['uses'=>'TipoEventoController@getTipoEventoCreate'] )->name('TipoEvento.create')->middleware('auth');
+Route::post('/tipoEventoCrear',['uses'=>'TipoEventoController@postTipoEventoCreate'])->name('tipoEvento.crear')->middleware('auth');
+//Edit
+Route::get('/tipoEventoedit/{id}',['uses'=>'TipoEventoController@getTipoEventoEditar'])->name('TipoEvento.edit')->middleware('auth');
+Route::post('/Update',['uses'=>'TipoEventoController@postTipoEventoUpdate'])->name('EventType.update')->middleware('auth');
+//Remove-SoftDeletes
 
+Route::get('/TipoEvento/delete/{id}',['uses'=>'TipoEventoController@destroyEventType'] )->name('EventType.delete')->middleware('auth');
 
-
+//Restaurar un solo elementos
+Route::get('/TipoEvento/restore/{id}',['uses'=>'TipoEventoController@TipoEventoRestore'] )->name('EventType.restore')->middleware('auth');
 
 
 

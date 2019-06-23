@@ -14,16 +14,14 @@ class TipoEventoController extends Controller
 
 //index
 public function getIndexTipoEvento(){
-
-       $TipoEvento = TipoEvento::orderBy('nombretipoEvento','asc');
-
-   return view('Mantenimientos.TipoEvento',['tipEvento'=>$TipoEvento]);
+       $TipoEvento =  TipoEvento::orderBy('nombretipoEvento','asc')->get();
+   return view('Mantenimientos.TipoEventoIndex',['tipEvento'=>$TipoEvento]);
 }
 
 //Create
   public function getTipoEventoCreate(){
-    $TipoEvento=TipoEvento::all();
-     return view('tipoEvento.create',['tipEvent'=>$TipoEvento]);
+    $TipoEvento= TipoEvento::all();
+     return view('Mantenimientos.TipoEventoCreate',['tipEvent'=>$TipoEvento]);
  }
 
 
@@ -31,11 +29,11 @@ public function getIndexTipoEvento(){
   {
 
       $this->validate($request, [
-      'nombretipoEvento' => 'required|min:4|unique:tipoEvento'
+      'nombretipoEvento' => 'required|min:4|unique:tipo_eventos'
       ]);
 
        $tipEvent = new TipoEvento([
-      'nombretipoEvento'=> $request->input('nombreTipoEvento')
+      'nombretipoEvento'=> $request->input('nombretipoEvento')
        ]);
        $tipEvent->save();
        return redirect()->route('TipoEvento.index');
@@ -45,28 +43,48 @@ public function getIndexTipoEvento(){
 
   //Edit
 
-public function getTipoEventoEditar(TipoEvento $id){
-
-   $tipEvent= TipoEvento::find($id->id);
- return view('TipoEvento.edit',['tipEvent'=>$tipEvent]);
+ public function getTipoEventoEditar($id)
+ {
+   $tipEvent = TipoEvento::find($id);
+return view('Mantenimientos.TipoEventoEdit',['tipEvent'=>$tipEvent,'tpEvtID'=>$id]);
  }
 
-
- public function getTipoEventoEdit(Request $request)
-     {
+ public function postTipoEventoUpdate(Request $request)
+  {
        $this->validate($request, [
-           'nombretipoEvento' => 'required|min:4|unique:tipoEvento'
+           'nombretipoEvento' => 'required|min:4|unique:tipo_eventos'
        ]);
        $tipEvent=TipoEvento::find($request->input('id'));
 
-       $tipEvent->nombretipoEvento=$request->input('nombreTipoEvento');
+       $tipEvent->nombretipoEvento=$request->input('nombretipoEvento');
        $tipEvent->save();
        return redirect()->route('TipoEvento.index');
  }
 
- //Remove
+//SoftDeletes
 
- //Eliminar
+//Remove
+
+
+   public function destroyEventType($id)
+   {
+         $tipEvent=TipoEvento::find($id);
+       $tipEvent->delete();
+     return redirect()->route('TipoEvento.index')->with("deleted" , $id );
+   }
+
+  //Resturar un elemento
+   public function TipoEventoRestore( $id )
+     {
+         //Indicamos que la busqueda se haga en los registros eliminados con withTrashed
+           $tipEvent=TipoEvento::withTrashed()->where('id', '=', $id)->first();
+
+         //Restauramos el registro
+           $tipEvent->restore();
+
+         return redirect()->route('TipoEvento.index')->with("restore" , $id );
+     }
+
 
 
 
