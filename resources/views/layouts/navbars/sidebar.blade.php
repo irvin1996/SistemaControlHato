@@ -5,18 +5,19 @@
       Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="https://creative-tim.com/" class="simple-text logo-normal">
-      {{ __('Creative Tim') }}
+    <a href="{{route('home')}}" class="simple-text logo-normal">
+      {{ __('La Gran Ceiba') }}
     </a>
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
+     <li class="nav-item{{ $activePage == 'home' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('home') }}">
           <i class="material-icons">dashboard</i>
-            <p>{{ __('Dashboard') }}</p>
+            <p>{{ __('Inicio') }}</p>
         </a>
       </li>
+      <!--
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
           <i><img style="width:25px" src="{{ asset('material') }}/img/laravel.svg"></i>
@@ -41,13 +42,47 @@
           </ul>
         </div>
       </li>
+-->
 
-      <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('TipoEvento.index') }}">
-          <i class="material-icons">Mantenimiento Eventos</i>
-            <p>{{ __('Mantenimiento') }}</p>
+      <li class="nav-item ">
+        <a class="nav-link" data-toggle="collapse" href="#Mantenimiento" aria-expanded="true">
+            <i class="material-icons">build</i>
+          <p>{{ __('Mantenimientos') }}
+            <b class="caret"></b>
+          </p>
         </a>
+        <div class="collapse show" id="Mantenimiento">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('Categoria.index') }}">
+                <span class="sidebar-mini"> C </span>
+                <span class="sidebar-normal">{{ __('Categoria') }} </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('Pajilla.index') }}">
+                <span class="sidebar-mini"> P </span>
+                <span class="sidebar-normal">{{ __('Pajilla') }} </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('Raza.index') }}">
+                <span class="sidebar-mini"> R </span>
+                <span class="sidebar-normal">{{ __('Razas') }} </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('TipoEvento.index') }}">
+                <span class="sidebar-mini"> TE </span>
+                <span class="sidebar-normal">{{ __('Tipo Eventos') }} </span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </li>
+
+
+
 
       <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('table') }}">
@@ -86,12 +121,7 @@
           <p>{{ __('RTL Support') }}</p>
         </a>
       </li>
-      <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('upgrade') }}">
-          <i class="material-icons">unarchive</i>
-          <p>{{ __('Upgrade to PRO') }}</p>
-        </a>
-      </li>
+    
     </ul>
   </div>
 </div>
