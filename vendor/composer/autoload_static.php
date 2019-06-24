@@ -411,6 +411,7 @@ class ComposerStaticInitcf4a73e79b7421a6683310e62e02cb3c
         'App\\Http\\Requests\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserRequest.php',
         'App\\Mineral' => __DIR__ . '/../..' . '/app/Mineral.php',
         'App\\Pajilla' => __DIR__ . '/../..' . '/app/Pajilla.php',
+        'App\\Permiso' => __DIR__ . '/../..' . '/app/Permiso.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -4025,6 +4026,7 @@ class ComposerStaticInitcf4a73e79b7421a6683310e62e02cb3c
         'phpDocumentor\\Reflection\\Types\\String_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/String_.php',
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
+        'rolesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/rolesTableSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
