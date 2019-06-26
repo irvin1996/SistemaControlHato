@@ -82,6 +82,59 @@ Route::get('/Pajilla/delete/{id}',['uses'=>'PajillaController@destroyPajilla'] )
 Route::get('/Pajilla/restore/{id}',['uses'=>'PajillaController@PajillaRestore'] )->name('Pajilla.restore')->middleware('auth');
 
 
+//Mineral
+
+Route::group(['prefix'=>'miner','middleware'=>'auth'],function(){
+//Index
+Route::get('/Mineral',['uses'=>'MineralController@getIndexMineral'] )->name('miner.index')->middleware('auth');
+//Create
+Route::get('/MineralCreate',['uses'=>'MineralController@getMineralCreate'] )->name('miner.create')->middleware('auth');
+Route::post('/MineralCrear',['uses'=>'MineralController@postMineralCreate'])->name('miner.crear')->middleware('auth');
+//Edit
+Route::get('/MineralEdit/{id}',['uses'=>'MineralController@getMineralEditar'])->name('miner.edit')->middleware('auth');
+Route::post('/Mineral/Update',['uses'=>'MineralController@postMineralUpdate'])->name('miner.update')->middleware('auth');
+//Remove-SoftDeletes
+Route::get('/Mineral/delete/{id}',['uses'=>'MineralController@destroyMineral'] )->name('miner.delete')->middleware('auth');
+//Restaurar un solo elementos
+Route::get('/Mineral/restore/{id}',['uses'=>'MineralController@MineralRestore'] )->name('miner.restore')->middleware('auth');
+});
+
+//Rol
+
+Route::group(['prefix'=>'roles','middleware'=>'auth'],function(){
+//Index
+Route::get('/Roles',['uses'=>'RoleController@getIndexRol'] )->name('roles.index')->middleware('auth');
+//Create
+Route::get('/RolesCreate',['uses'=>'RoleController@getRolCreate'] )->name('roles.create')->middleware('auth');
+Route::post('/RolesCrear',['uses'=>'RoleController@postRolCreate'])->name('roles.crear')->middleware('auth');
+//Edit
+Route::get('/RolesEdit/{id}',['uses'=>'RoleController@getRolEditar'])->name('roles.edit')->middleware('auth');
+Route::post('/Roles/Update',['uses'=>'RoleController@postRolUpdate'])->name('roles.update')->middleware('auth');
+//Remove-SoftDeletes
+Route::get('/Roles/delete/{id}',['uses'=>'RoleController@destroyRol'] )->name('roles.delete')->middleware('auth');
+//Restaurar un solo elementos
+Route::get('/Roles/restore/{id}',['uses'=>'RoleController@RolRestore'] )->name('roles.restore')->middleware('auth');
+});
+
+//Permiso
+
+Route::group(['prefix'=>'permisos','middleware'=>'auth'],function(){
+//Index
+Route::get('/Permisos',['uses'=>'PermisosController@getIndexPermiso'] )->name('permisos.index')->middleware('auth');
+//Create
+Route::get('/PermisosCreate',['uses'=>'PermisosController@getPermisoCreate'] )->name('permisos.create')->middleware('auth');
+Route::post('/PermisosCrear',['uses'=>'PermisosController@postPermisoCreate'])->name('permisos.crear')->middleware('auth');
+//Edit
+Route::get('/PermisosEdit/{id}',['uses'=>'PermisosController@getPermisoEditar'])->name('permisos.edit')->middleware('auth');
+Route::post('/Permisos/Update',['uses'=>'PermisosController@postPermisoUpdate'])->name('permisos.update')->middleware('auth');
+//Remove-SoftDeletes
+Route::get('/Permisos/delete/{id}',['uses'=>'PermisosController@destroyPermiso'] )->name('permisos.delete')->middleware('auth');
+//Restaurar un solo elementos
+Route::get('/Permisos/restore/{id}',['uses'=>'PermisosController@PermisoRestore'] )->name('permisos.restore')->middleware('auth');
+});
+
+
+
 //FIN MANTENIMIENTOS
 
 

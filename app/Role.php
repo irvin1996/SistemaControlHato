@@ -9,7 +9,7 @@ class Role extends Model
 {
   use SoftDeletes;
   protected $dates = ['deleted_at'];
-  protected $fillable=['nombreRol'];
+  protected $fillable=['nombreRole'];
 
 public function users(){
     return $this->hasMany('App\User','idRole');

@@ -60,15 +60,33 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{ route('miner.index') }}">
+                <span class="sidebar-mini"> M </span>
+                <span class="sidebar-normal">{{ __('Mineral') }} </span>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{{ route('Pajilla.index') }}">
                 <span class="sidebar-mini"> P </span>
                 <span class="sidebar-normal">{{ __('Pajilla') }} </span>
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{ route('permisos.index') }}">
+                <span class="sidebar-mini"> Pe </span>
+                <span class="sidebar-normal">{{ __('Permisos') }} </span>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{{ route('Raza.index') }}">
                 <span class="sidebar-mini"> R </span>
                 <span class="sidebar-normal">{{ __('Razas') }} </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('roles.index') }}">
+                <span class="sidebar-mini"> Ro </span>
+                <span class="sidebar-normal">{{ __('Roles') }} </span>
               </a>
             </li>
             <li class="nav-item">
@@ -121,7 +139,7 @@
           <p>{{ __('RTL Support') }}</p>
         </a>
       </li>
-    
+
     </ul>
   </div>
 </div>

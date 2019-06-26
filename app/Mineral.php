@@ -9,5 +9,5 @@ class Mineral extends Model
 {
     use SoftDeletes;
     protected $dates = ['deleted_at'];
-    protected $fillable=['nombrePermiso'];
+    protected $fillable=['nombreMineral'];
 }
