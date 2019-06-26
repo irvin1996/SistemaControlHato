@@ -14,7 +14,7 @@ class CreateRazasTable extends Migration
     public function up()
     {
         Schema::create('razas', function (Blueprint $table) {
-          $table->bigIncrements('id')->unique();;
+          $table->Increments('id')->unique();
           $table->string('nombreRaza');
           $table->softDeletes();
           $table->timestamps();

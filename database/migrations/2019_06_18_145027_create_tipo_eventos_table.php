@@ -14,7 +14,7 @@ class CreateTipoEventosTable extends Migration
     public function up()
     {
         Schema::create('tipo_eventos', function (Blueprint $table) {
-            $table->bigIncrements('id')->unique();;
+            $table->Increments('id')->unique();;
             $table->string('nombretipoEvento');
             $table->softDeletes();
             $table->timestamps();

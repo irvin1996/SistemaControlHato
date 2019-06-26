@@ -14,7 +14,7 @@ class CreatePajillasTable extends Migration
     public function up()
     {
         Schema::create('pajillas', function (Blueprint $table) {
-          $table->bigIncrements('id')->unique();;
+          $table->Increments('id')->unique();
           $table->string('nombrePajilla');
           $table->string('semen');
           $table->softDeletes();
