@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Mineral;
 use Illuminate\Support\Facades\Input;
+Use Alert;
 
 class MineralController extends Controller
 {

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Role;
 use Illuminate\Support\Facades\Input;
+Use Alert;
 
 class RoleController extends Controller
 {

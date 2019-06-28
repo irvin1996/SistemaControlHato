@@ -1,6 +1,7 @@
 @extends('layouts.app', ['activePage' => 'Permiso', 'titlePage' => __('Mantenimiento Permiso')])
 
 @section('content')
+  @include('sweetalert::alert')
   <div class="content">
     <div class="container-fluid">
       <div class="row">

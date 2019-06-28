@@ -133,6 +133,22 @@ Route::get('/Permisos/delete/{id}',['uses'=>'PermisosController@destroyPermiso']
 Route::get('/Permisos/restore/{id}',['uses'=>'PermisosController@PermisoRestore'] )->name('permisos.restore')->middleware('auth');
 });
 
+//Usuario
+
+Route::group(['prefix'=>'usuarios','middleware'=>'auth'],function(){
+//Index
+Route::get('/usuarios',['uses'=>'UserController@getIndexUsuario'] )->name('usuarios.index')->middleware('auth');
+//Create
+Route::get('/usuariosCreate',['uses'=>'UserController@getUsuarioCreate'] )->name('usuarios.create')->middleware('auth');
+Route::post('/usuariosCrear',['uses'=>'UserController@postUsuarioCreate'])->name('usuarios.crear')->middleware('auth');
+//Edit
+Route::get('/usuariosEdit/{id}',['uses'=>'UserController@getUsuarioEditar'])->name('usuarios.edit')->middleware('auth');
+Route::post('/usuarios/Update',['uses'=>'UserController@postUsuarioUpdate'])->name('usuarios.update')->middleware('auth');
+//Remove-SoftDeletes
+Route::get('/usuarios/delete/{id}',['uses'=>'UserController@destroyUsuario'] )->name('usuarios.delete')->middleware('auth');
+//Restaurar un solo elementos
+Route::get('/usuarios/restore/{id}',['uses'=>'UserController@PermisoUsuario'] )->name('usuarios.restore')->middleware('auth');
+});
 
 
 //FIN MANTENIMIENTOS

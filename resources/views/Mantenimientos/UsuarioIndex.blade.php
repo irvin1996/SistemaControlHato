@@ -1,7 +1,6 @@
-@extends('layouts.app', ['activePage' => 'Permiso', 'titlePage' => __('Mantenimiento Permiso')])
+@extends('layouts.app', ['activePage' => 'Usuario', 'titlePage' => __('Mantenimiento Usuario')])
 
 @section('content')
-
   <div class="content">
     <div class="container-fluid">
       <div class="row">
@@ -9,7 +8,7 @@
 
           <div class="card">
             <div class="card-header card-header-primary">
-              <h4 class="card-title ">{{ __('Permiso') }}</h4>
+              <h4 class="card-title ">{{ __('Usuario') }}</h4>
             <!--  <p class="card-category"> {{ __('Here you can manage users') }}</p> -->
             </div>
             <div class="card-body">
@@ -27,27 +26,36 @@
               @endif
 
               @if (Session::has('deleted'))
-               <div class="alert alert-danger" role="alert"> Permiso borrado, si desea deshacer el cambio <a href="{{ route('permisos.restore', [Session::get('deleted')]) }}"><b><u>Click aqui</u></b></a> </div>
+               <div class="alert alert-danger" role="alert"> Usuario borrado, si desea deshacer el cambio <a href="{{ route('usuarios.restore', [Session::get('deleted')]) }}"><b><u>Click aqui</u></b></a> </div>
              @endif
              @if (Session::has('restored'))
-               <div class="alert alert-success" role="alert"> Permiso restaurado</div>
+               <div class="alert alert-success" role="alert"> Usuario restaurado</div>
              @endif
-              @include('sweetalert::alert')
+
                  <br/>
 
               <div class="row">
                 <div class="col-12 text-right">
-                  <a href="{{route('permisos.create')}}" class="btn btn-sm btn-primary">{{ __('Nuevo') }}</a>
+                  <a href="{{route('usuarios.create')}}" class="btn btn-sm btn-primary">{{ __('Nuevo') }}</a>
                 </div>
               </div>
               <div class="table-responsive">
                 <table class="table">
                   <thead class=" text-primary">
                     <th>
-                        {{ __('Permiso') }}
+                        {{ __('Identificación') }}
                     </th>
                     <th>
-                      {{ __('Fecha Creación') }}
+                      {{ __('Nombre') }}
+                    </th>
+                    <th>
+                      {{ __('Correo electrónico') }}
+                    </th>
+                    <th>
+                      {{ __('Celular') }}
+                    </th>
+                    <th>
+                      {{ __('Rol') }}
                     </th>
                     <th class="text-right">
                       {{ __('Acciones') }}
@@ -55,25 +63,37 @@
                   </thead>
                   <tbody>
 
-                    @foreach($permi as $r)
+                    @foreach($usuario as $r)
                       <tr>
                         <td>
-                          {{ $r->nombrePermiso}}
+                          {{ $r->identificacion}}
                         </td>
-                          <td>
-                          {{Date("d-M-Y",strtotime($r->created_at))}}
+                        <td>
+                          {{$r->name.' '.$r->apellido1}}
                         </td>
+                        <td>
+                          {{ $r->email}}
+                        </td>
+                        <td>
+                          {{ $r->celular}}
+                        </td>
+                        @foreach ($ro as $rols)
+                            @if ($rols->id==$r->idRole)
+                            <td  id="idTRole" >{{$rols->nombreRole}}</td>
+                                    <?php $nombre=$rols->nombreRole ?>
+                              @endif
+                            @endforeach
                         <td class="td-actions text-right">
 
                             <form action="#" method="post">
                                 @csrf
 
 
-                                <a rel="tooltip" class="btn btn-success btn-link" href="{{route('permisos.edit',['id'=>$r->id])}}" data-original-title="" title="">
+                                <a rel="tooltip" class="btn btn-success btn-link" href="{{route('usuarios.edit',['id'=>$r->id])}}" data-original-title="" title="">
                                   <i class="material-icons">edit</i>
                                   <div class="ripple-container"></div>
                                 </a>
-                                <a rel="tooltip" class="btn btn-danger btn-link" href="{{route('permisos.delete',['id'=>$r->id])}}" data-original-title="" title="">
+                                <a rel="tooltip" class="btn btn-danger btn-link" href="{{route('usuarios.delete',['id'=>$r->id])}}" data-original-title="" title="">
                                   <i class="material-icons">close</i>
                                   <div class="ripple-container"></div>
                                 </a>

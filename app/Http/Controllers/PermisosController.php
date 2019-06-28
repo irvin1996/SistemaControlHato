@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Permiso;
 use Illuminate\Support\Facades\Input;
+Use Alert;
 class PermisosController extends Controller
 {
   //index
@@ -33,7 +34,7 @@ class PermisosController extends Controller
         $Permiso = new Permiso(['nombrePermiso'=> $request->input('nombrePermiso')
         ]);
         $Permiso->save();
-        return redirect()->route('permisos.index');
+        return redirect()->route('permisos.index')->with('success','Permiso: ' . $request->input('nombrePermiso').' guardado correctamente');
 
    }
 
